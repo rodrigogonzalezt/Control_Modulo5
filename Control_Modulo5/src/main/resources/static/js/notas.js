@@ -29,11 +29,12 @@ function NotasController(opcion) {
 			}
 		});       			
 		break;
+		
 	case "getNotas":
 		$.ajax({
 			type : "post",
 			url : "/notas/get",
-			data : "alumno="+$("#alumno").val(),
+			data : "idNota="+$("#idNota").val(),
 			success : function(res) {
 				if (res == null || res == "") {
 					$("#msg").show();
@@ -45,6 +46,28 @@ function NotasController(opcion) {
 					$("#numeroEvaluacion").val(res.numeroEvaluacion);
 					$("#nota").val(res.nota);
 					$("#idNota").val(res.idNota);
+					
+				}
+			},
+			error : function() {
+				$("#msg").show();
+				$("#msg").html("Error en busqueda.");
+			}
+		});       			
+		break;
+		
+	case "getPromedio":
+		$.ajax({
+			type : "post",
+			url : "/notas/getPromedio",
+			data : "curso="+$("#curso").val(),
+			success : function(res) {
+				if (res == null || res == "") {
+					$("#msg").show();
+					$("#msg").html("No se encontraron registros.");
+				} else {	
+					$("#promedioCurso").val(res.promedioCurso);
+					
 					
 				}
 			},

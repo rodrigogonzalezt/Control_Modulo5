@@ -35,9 +35,17 @@ public class NotasController {
 	
 	@RequestMapping(value="/get")
 	public @ResponseBody NotasDto ajaxGet(HttpServletRequest req, HttpServletResponse res) {
-		NotasDto job = notasService.get(req.getParameter("alumno"));
+		NotasDto job = notasService.get(req.getParameter("idNota"));
 		return job;
 	}
+	
+	
+	@RequestMapping(value="/getPromedio")
+	public @ResponseBody NotasDto ajaxGetPromedio(HttpServletRequest req, HttpServletResponse res) {
+		NotasDto promedio = notasService.get(req.getParameter("curso"));
+		return promedio;
+	}
+	
 	
 	@RequestMapping(value="/delete")
 	public @ResponseBody int ajaxDelete(HttpServletRequest req, HttpServletResponse res) {

@@ -22,8 +22,13 @@ public class NotasServiceImpl implements NotasService {
 	}
 
 	@Override
-	public NotasDto get(String alumno) {
-		return notasDao.get(alumno);
+	public NotasDto get(String idNota) {
+		return notasDao.get(idNota);
+	}
+	
+	@Override
+	public NotasDto getPromedio(String curso) {
+		return notasDao.getPromedio(curso);
 	}
 
 	@Override

@@ -17,7 +17,8 @@ import cursofullstack.modulo5.model.dto.NotasDto;
 public class NotasDaoImpl implements NotasDao {
 	
 	private String list = "SELECT * FROM notas ORDER BY alumno";
-	private String select = "SELECT * FROM notas WHERE alumno=?";
+	private String select = "SELECT * FROM notas WHERE id_nota=?";
+	private String selectPromedio = "select avg(nota) FROM notas WHERE curso=?";
 	private String insert = "INSERT INTO notas VALUES (?,?,?,?,?,?)";
 	private String update = "UPDATE notas SET curso=?, alumno=?, numero_modulo=?, numero_evaluacion=?," + 
 			"nota=?, id_nota=? WHERE id_nota=?";
@@ -34,8 +35,8 @@ public class NotasDaoImpl implements NotasDao {
 	}
 
 	@Override
-	public NotasDto get(String alumno) {
-		 Object[] args = {alumno};
+	public NotasDto get(String idNota) {
+		 Object[] args = {idNota};
 		 NotasDto notasDto;
 		    
 		    try {
@@ -51,6 +52,26 @@ public class NotasDaoImpl implements NotasDao {
 		    return notasDto;
 		}
 
+	@Override
+	public NotasDto getPromedio(String curso) {
+		 Object[] args = {curso};
+		 NotasDto notasDto;
+		    
+		    try {
+		    	notasDto = jdbcTemplate.queryForObject(selectPromedio,args,
+		    		BeanPropertyRowMapper.newInstance(NotasDto.class));
+		    } catch (EmptyResultDataAccessException e) {
+		    	notasDto=null;
+		    	e.printStackTrace();
+		    } catch (Exception e) {
+		    	notasDto=null;
+		    	e.printStackTrace();
+		    }
+		    return notasDto;
+		}
+
+	
+	
 	@Override
 	public int insert(NotasDto notasDto) {
 		int rows = 0;

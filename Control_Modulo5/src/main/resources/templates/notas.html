@@ -24,6 +24,7 @@
             		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:NotasController('insertNotas')">Nuevo</button>
             		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:NotasController('updateNotas')">Actualizar</button>
             		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:NotasController('deleteNotas')">Eliminar</button>
+            		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:NotasController('getPromedio')">Promedio Curso</button>
              	</div>
     			<p>
     			<div class="alert alert-danger" id="msg" hidden="true">
@@ -52,6 +53,10 @@
  				<div class="input-group">
    					<span class="input-group-addon">ID Nota</span>
    					<input id="idNota" type="text" class="form-control" name="idNota">
+ 				</div>
+ 				<div class="input-group">
+   					<span class="input-group-addon">Promedio Curso</span>
+   					<input id="promedioCurso" type="text" class="form-control" name="promedioCurso">
  				</div>
  				
  			</div>

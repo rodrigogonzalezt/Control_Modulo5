@@ -8,6 +8,7 @@ public class NotasDto {
 	private Integer numeroEvaluacion;
 	private Integer nota;
 	private String idNota;
+	private Integer promedio;
 	
 	
 	
@@ -47,6 +48,12 @@ public class NotasDto {
 	public void setIdNota(String idNota) {
 		this.idNota = idNota;
 	}
+	
+	public Integer getPromedio() {
+		return promedio;
+	}
+	
+	
 	
 	
 	
